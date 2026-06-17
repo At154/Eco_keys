@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco KEYS - Llaveros Aromáticos Sostenibles</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ===== RESET Y VARIABLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-green: #2e7d32;
+            --light-green: #4caf50;
+            --lime-green: #8bc34a;
+            --dark-green: #1b5e20;
+            --cream: #f5f0e8;
+            --gold: #c5a55a;
+            --dark: #1a1a2e;
+            --white: #ffffff;
+            --shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            --radius: 20px;
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--cream);
+            color: var(--dark);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        /* ===== BOTONES ===== */
+        .btn {
+            display: inline-block;
+            background: var(--lime-green);
+            color: var(--dark);
+            padding: 14px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+            background: var(--primary-green);
+            color: var(--white);
+        }
+
+        .btn:hover::after {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary-green);
+            color: var(--primary-green);
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-green);
+            color: var(--white);
+        }
+
+        .btn-white {
+            background: var(--white);
+            color: var(--dark-green);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .btn-white:hover {
+            background: var(--cream);
+            color: var(--dark-green);
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(245, 240, 232, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid rgba(46, 125, 50, 0.1);
+            padding: 15px 5%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--primary-green);
+            letter-spacing: -1px;
+        }
+
+        .logo i {
+            margin-right: 12px;
+            font-size: 32px;
+            color: var(--lime-green);
+        }
+
+        .logo span {
+            color: var(--gold);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 10px;
+        }
+
+        nav ul li a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 8px 16px;
+            border-radius: 30px;
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover {
+            background: var(--primary-green);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 30%, #a5d6a7 70%, #81c784 100%);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -10%;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(139, 195, 74, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: pulseGlow 6s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 0.8; }
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero-text h1 {
+            font-size: 4.2rem;
+            font-weight: 900;
+            line-height: 1.05;
+            color: var(--dark-green);
+            margin-bottom: 20px;
+        }
+
+        .hero-text h1 .highlight {
+            color: var(--primary-green);
+            position: relative;
+        }
+
+        .hero-text h1 .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: var(--lime-green);
+            opacity: 0.3;
+            border-radius: 4px;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: #2e3d2e;
+            margin-bottom: 30px;
+            line-height: 1.8;
+            max-width: 500px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .logo-main {
+            width: 420px;
+            height: 420px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 20px 60px rgba(46, 125, 50, 0.2);
+            padding: 20px;
+            animation: float 4s ease-in-out infinite;
+            overflow: hidden;
+        }
+
+        .logo-main img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+        }
+
+        /* ===== HOJAS DECORATIVAS ===== */
+        .leaf-decoration {
+            position: absolute;
+            opacity: 0.12;
+            pointer-events: none;
+            font-size: 60px;
+            color: var(--primary-green);
+        }
+
+        /* ===== MISIÓN Y VISIÓN ===== */
+        .mv-section {
+            background: var(--dark-green);
+            color: var(--white);
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .mv-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.05"><path d="M20,30 Q40,10 60,30 Q80,50 90,30" stroke="white" fill="none" stroke-width="2"/><circle cx="30" cy="70" r="5" fill="white"/><circle cx="70" cy="60" r="8" fill="white"/></svg>');
+            background-size: 200px;
+        }
+
+        .mv-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .mv-card {
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: var(--radius);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: var(--transition);
+        }
+
+        .mv-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.12);
+        }
+
+        .mv-card h3 {
+            font-size: 1.8rem;
+            color: var(--lime-green);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .mv-card h3 i {
+            font-size: 1.5rem;
+        }
+
+        .mv-card p {
+            line-height: 1.8;
+            font-size: 1.05rem;
+            opacity: 0.95;
+        }
+
+        /* ===== SECCIÓN PRODUCTOS ===== */
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--dark-green);
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--lime-green);
+            margin: 15px auto 0;
+            border-radius: 4px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #555;
+            font-size: 1.1rem;
+            margin-bottom: 50px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+            position: relative;
+            border: 1px solid rgba(46, 125, 50, 0.08);
+        }
+
+        .product-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 15px 45px rgba(46, 125, 50, 0.15);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--lime-green);
+            color: var(--dark);
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            z-index: 5;
+        }
+
+        .product-img {
+            height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-img::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0,0,0,0.1), rgba(0,0,0,0.3));
+            z-index: 1;
+        }
+
+        .product-img i {
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .product-info {
+            padding: 25px;
+        }
+
+        .product-info h3 {
+            font-size: 1.3rem;
+            color: var(--dark-green);
+            margin-bottom: 8px;
+        }
+
+        .product-info p {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .product-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--primary-green);
+        }
+
+        .btn-small {
+            padding: 8px 20px;
+            font-size: 0.85rem;
+            background: var(--primary-green);
+            color: var(--white);
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .btn-small:hover {
+            background: var(--dark-green);
+            transform: scale(1.05);
+        }
+
+        .bg-cafe { background: linear-gradient(135deg, #6f4e37, #3e2723); }
+        .bg-lavanda { background: linear-gradient(135deg, #967bb6, #6b5b95); }
+        .bg-naranja { background: linear-gradient(135deg, #ff9800, #e65100); }
+        .bg-menta { background: linear-gradient(135deg, #4caf50, #1b5e20); }
+        .bg-fresa { background: linear-gradient(135deg, #f06292, #ad1457); }
+
+        /* ===== SECCIÓN BENEFICIOS ===== */
+        .benefits-section {
+            background: var(--white);
+            padding: 80px 0;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .benefit-card {
+            text-align: center;
+            padding: 40px 25px;
+            border-radius: var(--radius);
+            transition: var(--transition);
+            background: var(--cream);
+            border: 1px solid rgba(46, 125, 50, 0.08);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(46, 125, 50, 0.1);
+            background: var(--white);
+        }
+
+        .benefit-icon {
+            font-size: 50px;
+            color: var(--primary-green);
+            margin-bottom: 20px;
+        }
+
+        .benefit-card h3 {
+            color: var(--dark-green);
+            margin-bottom: 10px;
+        }
+
+        .benefit-card p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* ===== SECCIÓN ESTADÍSTICAS ===== */
+        .stats-section {
+            background: var(--dark-green);
+            color: var(--white);
+            padding: 60px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--lime-green);
+        }
+
+        .stat-item p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* ===== SECCIÓN TESTIMONIOS ===== */
+        .testimonials-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '\201C';
+            font-size: 60px;
+            color: var(--lime-green);
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            opacity: 0.2;
+            font-family: Georgia, serif;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: #333;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            font-size: 1.05rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--white);
+            font-size: 1.2rem;
+            background: var(--primary-green);
+        }
+
+        .author-info strong {
+            display: block;
+            color: var(--dark-green);
+        }
+
+        .author-info span {
+            color: #777;
+            font-size: 0.85rem;
+        }
+
+        /* ===== CTA FINAL ===== */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+            padding: 80px 0;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .cta-section h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #1a2e1a;
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: var(--lime-green);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-col p, .footer-col a {
+            color: #bbb;
+            line-height: 1.8;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-col a:hover {
+            color: var(--lime-green);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-icons a {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+            color: var(--white);
+            font-size: 1.2rem;
+        }
+
+        .social-icons a:hover {
+            background: var(--lime-green);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 25px;
+            text-align: center;
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 992px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .logo-main {
+                width: 300px;
+                height: 300px;
+            }
+
+            .hero-text h1 {
+                font-size: 3rem;
+            }
+
+            .mv-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 12px 20px;
+            }
+
+            .logo {
+                font-size: 22px;
+            }
+
+            .logo i {
+                font-size: 24px;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 68px;
+                left: 0;
+                right: 0;
+                background: var(--cream);
+                padding: 20px;
+                border-radius: 0 0 var(--radius) var(--radius);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                gap: 8px;
+                z-index: 999;
+            }
+
+            nav ul.show {
+                display: flex;
+            }
+
+            nav ul li a {
+                padding: 12px 20px;
+                font-size: 0.95rem;
+                width: 100%;
+                display: block;
+                text-align: center;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 100px 0 60px;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.2rem;
+                margin-bottom: 15px;
+            }
+
+            .hero-text p {
+                font-size: 1rem;
+                margin: 0 auto 25px;
+                max-width: 100%;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+                max-width: 280px;
+                text-align: center;
+            }
+
+            .logo-main {
+                width: 200px;
+                height: 200px;
+                padding: 15px;
+                margin: 0 auto;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .section-subtitle {
+                font-size: 1rem;
+                margin-bottom: 30px;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 15px;
+            }
+
+            .product-card {
+                border-radius: 15px;
+            }
+
+            .product-img {
+                height: 160px;
+                font-size: 40px;
+            }
+
+            .product-info {
+                padding: 15px;
+            }
+
+            .product-info h3 {
+                font-size: 1.1rem;
+            }
+
+            .product-info p {
+                font-size: 0.85rem;
+            }
+
+            .price {
+                font-size: 1.3rem;
+            }
+
+            .btn-small {
+                padding: 6px 14px;
+                font-size: 0.75rem;
+            }
+
+            .mv-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .mv-card {
+                padding: 25px;
+            }
+
+            .mv-card h3 {
+                font-size: 1.4rem;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 15px;
+            }
+
+            .benefit-card {
+                padding: 25px 15px;
+            }
+
+            .benefit-icon {
+                font-size: 35px;
+            }
+
+            .benefit-card h3 {
+                font-size: 1rem;
+            }
+
+            .benefit-card p {
+                font-size: 0.85rem;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .testimonial-card {
+                padding: 20px;
+            }
+
+            .cta-section {
+                padding: 50px 0;
+            }
+
+            .cta-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .cta-section p {
+                font-size: 1rem;
+            }
+
+            .cta-section .btn {
+                width: 100%;
+                max-width: 280px;
+                margin: 5px 0 !important;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+
+            .stat-item h3 {
+                font-size: 2.2rem;
+            }
+
+            .stat-item p {
+                font-size: 0.9rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+                text-align: center;
+            }
+
+            .social-icons {
+                justify-content: center;
+            }
+
+            .footer-bottom {
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 18px;
+            }
+
+            .hero-text h1 {
+                font-size: 1.8rem;
+            }
+
+            .logo-main {
+                width: 160px;
+                height: 160px;
+                padding: 10px;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product-img {
+                height: 180px;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product-meta {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+
+            .btn-small {
+                width: 100%;
+                text-align: center;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 15px;
+            }
+
+            .stat-item h3 {
+                font-size: 1.8rem;
+            }
+
+            .cta-section h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* ===== ANIMACIONES SCROLL ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="logo">
+            <i class="fas fa-leaf"></i>
+            Eco <span>KEYS</span>
+        </div>
+        <div class="hamburger" onclick="document.querySelector('nav ul').classList.toggle('show')">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#mision-vision">Nosotros</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#beneficios">Beneficios</a></li>
+                <li><a href="#testimonios">Testimonios</a></li>
+                <li><a href="Videos.html">Comercial</a></li>
+                <li><a href="cotizacion.html" class="btn-outline" style="border-radius:30px; padding:8px 20px;">Cotizar</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <section id="inicio" class="hero">
+        <div class="leaf-decoration" style="top:10%; left:5%; transform: rotate(-20deg);"><i class="fas fa-leaf"></i></div>
+        <div class="leaf-decoration" style="bottom:15%; right:8%; transform: rotate(40deg);"><i class="fas fa-leaf"></i></div>
+        <div class="leaf-decoration" style="top:40%; right:20%; transform: rotate(70deg); font-size:40px;"><i class="fas fa-leaf"></i></div>
+
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Lleva la <br><span class="highlight">naturaleza</span> contigo</h1>
+                <p>Descubre nuestros llaveros aromáticos hechos con materiales reciclados. Fragancias únicas que transforman tu día a día, cuidando el planeta.</p>
+                <div class="hero-buttons">
+                    <a href="#productos" class="btn">Explorar aromas <i class="fas fa-arrow-right" style="margin-left:8px;"></i></a>
+                    <a href="cotizacion.html" class="btn btn-outline">Solicitar cotización</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="logo-main">
+                    <img src="imagenes/Ecokeys.jpg" alt="Logo Eco KEYS">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== MISIÓN Y VISIÓN ===== -->
+    <section id="mision-vision" class="mv-section">
+        <div class="container">
+            <h2 class="section-title" style="color: var(--white); margin-bottom: 40px;">Nuestra Esencia</h2>
+            <div class="mv-grid">
+                <div class="mv-card reveal">
+                    <h3><i class="fas fa-bullseye"></i> Misión</h3>
+                    <p>Transformar materiales reciclables en productos útiles, creativos y sustentables mediante la aplicación de conocimientos de Química Industrial, fomentando la conciencia ecológica, la innovación y el emprendimiento responsable para contribuir al cuidado del medio ambiente.</p>
+                </div>
+                <div class="mv-card reveal reveal-delay-1">
+                    <h3><i class="fas fa-eye"></i> Visión</h3>
+                    <p>Ser un proyecto estudiantil referente en innovación ambiental y aprovechamiento de materiales reciclados como el unicel, impulsando el desarrollo de soluciones sustentables que inspiren a la comunidad educativa y a la sociedad a adoptar prácticas responsables con el medio ambiente, generando además oportunidades de emprendimiento ecológico.</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="#productos" class="btn btn-white">Conoce nuestros productos <i class="fas fa-arrow-right" style="margin-left:8px;"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PRODUCTOS ===== -->
+    <section id="productos" style="padding: 80px 0; background: var(--white);">
+        <div class="container">
+            <h2 class="section-title reveal">Nuestros Aromas</h2>
+            <p class="section-subtitle reveal">Cinco fragancias cuidadosamente seleccionadas para cada momento del día.</p>
+
+            <div class="products-grid">
+                <!-- Café -->
+                <div class="product-card reveal">
+                    <span class="product-badge">Más vendido</span>
+                    <div class="product-img bg-cafe">
+                        <i class="fas fa-coffee"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>Llavero Aroma Café</h3>
+                        <p>Fragancia intensa y reconfortante que evoca la calidez de una taza de café recién hecho.</p>
+                        <div class="product-meta">
+                            <span class="price">$30 MXN</span>
+                            <a href="detallescafe.html" class="btn-small">Ver detalles</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lavanda -->
+                <div class="product-card reveal reveal-delay-1">
+                    <div class="product-img bg-lavanda">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>Llavero Aroma Lavanda</h3>
+                        <p>Esencia relajante que ayuda a reducir el estrés y promover un sueño reparador.</p>
+                        <div class="product-meta">
+                            <span class="price">$30 MXN</span>
+                            <a href="lavanda.html" class="btn-small">Ver detalles</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Naranja -->
+                <div class="product-card reveal reveal-delay-2">
+                    <div class="product-img bg-naranja">
+                        <i class="fas fa-lemon"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>Llavero Aroma Naranja</h3>
+                        <p>Energizante aroma cítrico que revitaliza tus espacios y mejora el estado de ánimo.</p>
+                        <div class="product-meta">
+                            <span class="price">$30 MXN</span>
+                            <a href="naranja.html" class="btn-small">Ver detalles</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Menta -->
+                <div class="product-card reveal reveal-delay-3">
+                    <div class="product-img bg-menta">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>Llavero Aroma Menta</h3>
+                        <p>Fragancia refrescante que estimula la concentración y claridad mental.</p>
+                        <div class="product-meta">
+                            <span class="price">$30 MXN</span>
+                            <a href="menta.html" class="btn-small">Ver detalles</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fresa -->
+                <div class="product-card reveal reveal-delay-4">
+                    <div class="product-img bg-fresa">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>Llavero Aroma Fresa</h3>
+                        <p>Dulce y jugoso aroma que llena tus espacios de frescura y vitalidad.</p>
+                        <div class="product-meta">
+                            <span class="price">$30 MXN</span>
+                            <a href="fresa.html" class="btn-small">Ver detalles</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== BENEFICIOS ===== -->
+    <section id="beneficios" class="benefits-section">
+        <div class="container">
+            <h2 class="section-title reveal">¿Por qué elegir Eco KEYS?</h2>
+            <p class="section-subtitle reveal">Calidad, sostenibilidad y diseño en cada pieza.</p>
+
+            <div class="benefits-grid">
+                <div class="benefit-card reveal">
+                    <div class="benefit-icon"><i class="fas fa-recycle"></i></div>
+                    <h3>Material Reciclado</h3>
+                    <p>Hechos con unicel tratado para crear una resina ecológica, resistente y duradera.</p>
+                </div>
+                <div class="benefit-card reveal reveal-delay-1">
+                    <div class="benefit-icon"><i class="fas fa-clock"></i></div>
+                    <h3>Fragancia Duradera</h3>
+                    <p>Nuestra tecnología permite que el aroma se mantenga activo por más tiempo, día tras día.</p>
+                </div>
+                <div class="benefit-card reveal reveal-delay-2">
+                    <div class="benefit-icon"><i class="fas fa-gem"></i></div>
+                    <h3>Diseño Único</h3>
+                    <p>Acabados vibrantes y formas naturales que combinan estilo y funcionalidad.</p>
+                </div>
+                <div class="benefit-card reveal reveal-delay-3">
+                    <div class="benefit-icon"><i class="fas fa-hand-holding-heart"></i></div>
+                    <h3>Hecho a Mano</h3>
+                    <p>Producción artesanal que garantiza calidad y atención a cada detalle.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ESTADÍSTICAS ===== -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item reveal">
+                    <h3>500+</h3>
+                    <p>Llaveros vendidos</p>
+                </div>
+                <div class="stat-item reveal reveal-delay-1">
+                    <h3>5</h3>
+                    <p>Aromas exclusivos</p>
+                </div>
+                <div class="stat-item reveal reveal-delay-2">
+                    <h3>100%</h3>
+                    <p>Material reciclado</p>
+                </div>
+                <div class="stat-item reveal reveal-delay-3">
+                    <h3>4.9★</h3>
+                    <p>Calificación clientes</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TESTIMONIOS ===== -->
+    <section id="testimonios" class="testimonials-section">
+        <div class="container">
+            <h2 class="section-title reveal">Lo que dicen nuestros clientes</h2>
+            <p class="section-subtitle reveal">Historias reales de personas que llevan la naturaleza consigo.</p>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-text">
+                        "El llavero de café es increíble. Cada vez que lo saco de mi bolsillo, me recibe ese aroma que me transporta a mi cafetería favorita. ¡Es mi compañero diario!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">M</div>
+                        <div class="author-info">
+                            <strong>María González</strong>
+                            <span>Cliente frecuente</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card reveal reveal-delay-1">
+                    <div class="testimonial-text">
+                        "Compré el de lavanda para mi bolso y ha mejorado mi calidad de sueño notablemente. Además, me encanta saber que estoy ayudando al medio ambiente."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">C</div>
+                        <div class="author-info">
+                            <strong>Carlos Rodríguez</strong>
+                            <span>Cliente satisfecho</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card reveal reveal-delay-2">
+                    <div class="testimonial-text">
+                        "Mis hijos adoran el aroma a menta en mi bolso. Siempre preguntan por él y me piden que lo lleve a todos lados. ¡Eco KEYS es calidad y conciencia!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">A</div>
+                        <div class="author-info">
+                            <strong>Ana Martínez</strong>
+                            <span>Cliente</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA FINAL ===== -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="reveal">¿Listo para llevar la naturaleza contigo?</h2>
+            <p class="reveal reveal-delay-1">Únete a la comunidad Eco KEYS y transforma tu día a día con aromas que cuidan el planeta.</p>
+            <div class="reveal reveal-delay-2">
+                <a href="cotizacion.html" class="btn btn-white" style="margin-right: 15px;">Solicitar cotización</a>
+                <a href="#productos" class="btn btn-outline" style="border-color: white; color: white;">Ver productos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer id="contacto">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Eco KEYS</h4>
+                    <p>Llevamos la esencia de la naturaleza a tu día a día con llaveros aromáticos sostenibles y llenos de estilo.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Contacto</h4>
+                    <p><strong>Instagram:</strong> <a href="https://instagram.com/eco_keys" target="_blank">@eco_keys</a></p>
+                    <p><strong>Teléfono:</strong> <a href="tel:+527227083319">272 708 3319</a></p>
+                    <p><strong>Email:</strong> <a href="mailto:contacto@ecokeys.com">contacto@ecokeys.com</a></p>
+                </div>
+                <div class="footer-col">
+                    <h4>Enlaces rápidos</h4>
+                    <p><a href="#productos">Productos</a></p>
+                    <p><a href="#beneficios">Beneficios</a></p>
+                    <p><a href="cotizacion.html">Cotización</a></p>
+                    <p><a href="Videos.html">Comercial</a></p>
+                </div>
+                <div class="footer-col">
+                    <h4>Síguenos</h4>
+                    <div class="social-icons">
+                        <a href="https://instagram.com/eco_keys" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Eco KEYS. Todos los derechos reservados. | Hecho con <i class="fas fa-heart" style="color: var(--lime-green);"></i> por el planeta</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script>
+        // Navegación suave
+        document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    // Cerrar menú móvil
+                    document.querySelector('nav ul').classList.remove('show');
+                }
+            });
+        });
+
+        // Animaciones scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Cerrar menú al hacer click fuera
+        document.addEventListener('click', function(e) {
+            const nav = document.querySelector('nav ul');
+            const hamburger = document.querySelector('.hamburger');
+            if (nav.classList.contains('show') && !nav.contains(e.target) && !hamburger.contains(e.target)) {
+                nav.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Llavero Aroma Menta - Eco KEYS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ===== RESET Y VARIABLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-green: #2e7d32;
+            --light-green: #4caf50;
+            --lime-green: #8bc34a;
+            --dark-green: #1b5e20;
+            --cream: #f5f0e8;
+            --gold: #c5a55a;
+            --dark: #1a1a2e;
+            --white: #ffffff;
+            --shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            --radius: 20px;
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #f5f0e8, #e8e0d8);
+            color: var(--dark);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        /* ===== BOTONES ===== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            flex: 1;
+        }
+
+        .btn i {
+            margin-right: 8px;
+        }
+
+        .btn-primary {
+            background: var(--lime-green);
+            color: var(--dark);
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+            background: var(--primary-green);
+            color: var(--white);
+        }
+
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+            border: 2px solid #ddd;
+        }
+
+        .btn-secondary:hover {
+            background: #e0e0e0;
+            transform: translateY(-2px);
+        }
+
+        .btn-back {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+            padding: 8px 16px;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+        }
+
+        .btn-back i {
+            margin-right: 8px;
+        }
+
+        .btn-back:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateX(-3px);
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            background: linear-gradient(135deg, var(--dark-green), var(--primary-green));
+            color: var(--white);
+            border-radius: 0 0 var(--radius) var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--white);
+            letter-spacing: -1px;
+        }
+
+        .logo i {
+            margin-right: 12px;
+            font-size: 32px;
+            color: var(--lime-green);
+        }
+
+        .logo span {
+            color: var(--gold);
+        }
+
+        /* ===== PRODUCTO DETALLE ===== */
+        .product-detail {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            margin-top: 40px;
+        }
+
+        /* Imagen del producto */
+        .product-image {
+            background: linear-gradient(135deg, #4caf50, #1b5e20);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            min-height: 350px;
+        }
+
+        .product-image:before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
+            top: -50%;
+            left: -50%;
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .product-image img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            object-fit: contain;
+            z-index: 2;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .product-image .fallback-icon {
+            font-size: 100px;
+            color: rgba(255, 255, 255, 0.7);
+            z-index: 2;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Información del producto */
+        .product-info {
+            padding: 40px;
+        }
+
+        .product-title {
+            font-size: 2.5rem;
+            color: var(--dark-green);
+            margin-bottom: 5px;
+            font-weight: 800;
+        }
+
+        .product-subtitle {
+            font-size: 1.1rem;
+            color: #2e7d32;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .product-price {
+            font-size: 2rem;
+            color: var(--primary-green);
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .product-description {
+            margin-bottom: 25px;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #444;
+        }
+
+        /* Características */
+        .features {
+            margin-bottom: 25px;
+        }
+
+        .features h3 {
+            color: var(--dark-green);
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+        }
+
+        .feature-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 20px;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: center;
+            font-size: 0.95rem;
+        }
+
+        .feature-list i {
+            color: var(--lime-green);
+            margin-right: 10px;
+            font-size: 1rem;
+        }
+
+        /* Beneficios */
+        .benefits {
+            background: rgba(46, 125, 50, 0.05);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            border-left: 4px solid var(--primary-green);
+        }
+
+        .benefits h3 {
+            color: var(--dark-green);
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+        }
+
+        .benefit-item {
+            display: flex;
+            margin-bottom: 8px;
+            align-items: flex-start;
+        }
+
+        .benefit-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .benefit-icon {
+            color: var(--primary-green);
+            margin-right: 10px;
+            font-size: 1rem;
+            margin-top: 2px;
+            min-width: 20px;
+        }
+
+        /* ===== ACCIONES ===== */
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        /* ===== SLOGAN ===== */
+        .slogan-section {
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+            color: var(--white);
+            padding: 30px;
+            border-radius: var(--radius);
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .slogan-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: var(--lime-green);
+        }
+
+        .slogan-text {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+
+        .slogan-subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* ===== USO RECOMENDADO ===== */
+        .recommended-usage {
+            margin-top: 40px;
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 40px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .recommended-usage h2 {
+            color: var(--dark-green);
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 1.8rem;
+        }
+
+        .usage-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .usage-item {
+            text-align: center;
+            padding: 25px 20px;
+            background: rgba(46, 125, 50, 0.05);
+            border-radius: 12px;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .usage-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--lime-green);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .usage-icon {
+            font-size: 36px;
+            color: var(--primary-green);
+            margin-bottom: 12px;
+        }
+
+        .usage-item h3 {
+            color: var(--dark-green);
+            margin-bottom: 8px;
+            font-size: 1.2rem;
+        }
+
+        .usage-item p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .coverage-info {
+            background: rgba(46, 125, 50, 0.05);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
+            border-left: 4px solid var(--primary-green);
+            font-size: 0.95rem;
+        }
+
+        .coverage-info i {
+            color: var(--primary-green);
+            margin-right: 8px;
+        }
+
+        /* ===== EFECTOS DE AROMA ===== */
+        .aroma-effect {
+            position: fixed;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(46, 125, 50, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 1;
+            animation: aromaFloat 8s ease-in-out infinite;
+        }
+
+        @keyframes aromaFloat {
+            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.5; }
+            25% { transform: translate(20px, -20px) scale(1.1); opacity: 0.8; }
+            50% { transform: translate(-15px, 15px) scale(0.9); opacity: 0.3; }
+            75% { transform: translate(10px, 10px) scale(1.05); opacity: 0.6; }
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #1a2e1a;
+            color: var(--white);
+            padding: 40px 0;
+            text-align: center;
+            margin-top: 60px;
+            border-radius: var(--radius) var(--radius) 0 0;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-content h2 {
+            color: var(--lime-green);
+            font-weight: 800;
+        }
+
+        .social-icons {
+            margin: 15px 0;
+        }
+
+        .social-icons a {
+            color: var(--white);
+            margin: 0 10px;
+            font-size: 20px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--lime-green);
+        }
+
+        .contact-info {
+            margin: 10px 0;
+            font-size: 1rem;
+        }
+
+        .contact-info strong {
+            color: var(--lime-green);
+        }
+
+        /* ===== RESPONSIVE MÓVIL ===== */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 12px;
+                padding: 15px 20px;
+            }
+
+            .logo {
+                font-size: 22px;
+            }
+
+            .logo i {
+                font-size: 24px;
+            }
+
+            .btn-back {
+                font-size: 0.85rem;
+                padding: 6px 14px;
+            }
+
+            .product-detail {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .product-image {
+                min-height: 250px;
+                padding: 30px;
+            }
+
+            .product-image img {
+                max-width: 200px;
+            }
+
+            .product-info {
+                padding: 25px 20px;
+            }
+
+            .product-title {
+                font-size: 1.8rem;
+            }
+
+            .product-price {
+                font-size: 1.5rem;
+            }
+
+            .feature-list {
+                grid-template-columns: 1fr;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .usage-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+
+            .usage-item {
+                padding: 18px 15px;
+            }
+
+            .usage-icon {
+                font-size: 28px;
+            }
+
+            .usage-item h3 {
+                font-size: 1rem;
+            }
+
+            .recommended-usage {
+                padding: 25px 20px;
+            }
+
+            .recommended-usage h2 {
+                font-size: 1.5rem;
+            }
+
+            .slogan-text {
+                font-size: 1.4rem;
+            }
+
+            .slogan-subtitle {
+                font-size: 0.95rem;
+            }
+
+            footer {
+                padding: 30px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 18px;
+            }
+
+            .product-title {
+                font-size: 1.5rem;
+            }
+
+            .product-image {
+                min-height: 200px;
+                padding: 20px;
+            }
+
+            .product-image img {
+                max-width: 150px;
+            }
+
+            .usage-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product-description {
+                font-size: 0.95rem;
+            }
+        }
+
+        /* ===== ANIMACIONES ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Efectos de aroma flotantes -->
+    <div class="aroma-effect" style="top: 15%; left: 8%; animation-delay: 0s;"></div>
+    <div class="aroma-effect" style="top: 55%; right: 12%; animation-delay: 2s;"></div>
+    <div class="aroma-effect" style="bottom: 25%; left: 15%; animation-delay: 4s;"></div>
+
+    <!-- ===== HEADER ===== -->
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-leaf"></i>
+                Eco <span>KEYS</span>
+            </div>
+            <a href="index.html" class="btn-back">
+                <i class="fas fa-arrow-left"></i>
+                Volver al Catálogo
+            </a>
+        </header>
+    </div>
+
+    <!-- ===== CONTENIDO PRINCIPAL ===== -->
+    <main>
+        <div class="container">
+            <div class="product-detail reveal active">
+                <div class="product-image">
+                    <!-- INTEGRACIÓN DE IMAGEN: menta.png -->
+                    <img src="imagenes/menta.png" alt="Llavero Aroma Menta Eco KEYS" 
+                         onerror="this.style.display='none'; document.getElementById('fallback-menta').style.display='block';">
+                    <div class="fallback-icon" id="fallback-menta" style="display: none;">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                </div>
+                
+                <div class="product-info">
+                    <h1 class="product-title">Llavero Aroma Menta</h1>
+                    <p class="product-subtitle">Fragancia refrescante que estimula la concentración</p>
+                    <div class="product-price">$30 MXN</div>
+                    
+                    <p class="product-description">
+                        Experimenta la frescura revitalizante de la menta con nuestro llavero aromático. 
+                        Esta fragancia estimulante y purificante despierta tus sentidos, mejora la concentración 
+                        y renueva el ambiente con su aroma vigorizante y energético.
+                    </p>
+                    
+                    <div class="features">
+                        <h3>Características principales</h3>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i> Duración de 3 a 4 semanas</li>
+                            <li><i class="fas fa-recycle"></i> Material reciclado - unicel tratado</li>
+                            <li><i class="fas fa-check-circle"></i> Diseño fresco y revitalizante</li>
+                            <li><i class="fas fa-check-circle"></i> Libre de químicos dañinos</li>
+                            <li><i class="fas fa-check-circle"></i> Hecho en México</li>
+                            <li><i class="fas fa-check-circle"></i> Perfecto para uso personal</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="benefits">
+                        <h3>Beneficios del aroma menta</h3>
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i class="fas fa-brain"></i></div>
+                            <div>Estimula la concentración mental</div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i class="fas fa-bolt"></i></div>
+                            <div>Energiza y revitaliza</div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i class="fas fa-wind"></i></div>
+                            <div>Purifica y refresca el ambiente</div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i class="fas fa-smile"></i></div>
+                            <div>Alivia la fatiga mental</div>
+                        </div>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <a href="cotizacion.html" class="btn btn-primary">
+                            <i class="fas fa-calculator"></i>
+                            Solicitar Cotización
+                        </a>
+                        <a href="index.html" class="btn btn-secondary">
+                            <i class="fas fa-undo"></i>
+                            Ver Más Aromas
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Eslogan -->
+            <div class="slogan-section reveal">
+                <div class="slogan-icon">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <div class="slogan-text">Eco KEYS, tu esencia sostenible</div>
+                <div class="slogan-subtitle">Lleva la frescura y energía cuidando el planeta</div>
+            </div>
+            
+            <!-- Uso Recomendado -->
+            <div class="recommended-usage reveal">
+                <h2>Uso Recomendado</h2>
+                
+                <div class="usage-grid">
+                    <div class="usage-item">
+                        <div class="usage-icon"><i class="fas fa-briefcase"></i></div>
+                        <h3>Bolsos</h3>
+                        <p>Mantén tus pertenencias con un aroma fresco y revitalizante</p>
+                    </div>
+                    
+                    <div class="usage-item">
+                         <div class="usage-icon"><i class="fas fa-school"></i></div>  
+                        <h3>Mochilas</h3>
+                        <p>Aroma energizante para tu día a día estudiantil o laboral</p>
+                    </div>
+                    
+                    <div class="usage-item">
+                        <div class="usage-icon"><i class="fas fa-key"></i></div>
+                        <h3>Llaveros Personales</h3>
+                        <p>Identifica tus llaves con estilo y fragancia refrescante</p>
+                    </div>
+                    
+                    <div class="usage-item">
+                        <div class="usage-icon"><i class="fas fa-suitcase-rolling"></i></div>
+                        <h3>Uso Personal</h3>
+                        <p>Ideal para llevar contigo en cualquier momento del día</p>
+                    </div>
+                </div>
+                
+                <div class="coverage-info">
+                    <i class="fas fa-info-circle"></i>
+                    <strong>Nota:</strong> Nuestros llaveros están diseñados para uso personal en espacios cercanos. 
+                    Perfectos para bolsas, mochilas y objetos personales.
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <h2>Eco KEYS</h2>
+                <p>Tu esencia sostenible siempre contigo</p>
+                <div class="social-icons">
+                    <a href="https://instagram.com/eco_keys" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+                <div class="contact-info">
+                    <div><strong>Instagram:</strong> @eco_keys</div>
+                    <div><strong>Teléfono:</strong> 272 708 3319</div>
+                </div>
+                <p>&copy; 2025 Eco KEYS. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script>
+        // ===== ANIMACIONES SCROLL =====
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -30px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // ===== EFECTOS DE AROMA =====
+        document.addEventListener('DOMContentLoaded', function() {
+            const container = document.body;
+            
+            // Crear más partículas de aroma
+            for (let i = 0; i < 3; i++) {
+                const aroma = document.createElement('div');
+                aroma.className = 'aroma-effect';
+                
+                const top = Math.random() * 70 + 10;
+                const left = Math.random() * 70 + 10;
+                
+                aroma.style.top = top + '%';
+                aroma.style.left = left + '%';
+                aroma.style.animationDelay = (Math.random() * 5) + 's';
+                aroma.style.width = (Math.random() * 40 + 40) + 'px';
+                aroma.style.height = aroma.style.width;
+                
+                container.appendChild(aroma);
+            }
+            
+            // Efecto de interacción con el producto
+            const productImage = document.querySelector('.product-image');
+            if (productImage) {
+                productImage.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.02)';
+                    this.style.transition = 'transform 0.3s ease';
+                });
+                
+                productImage.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            }
+
+            // Efecto hover en los items de uso
+            const usageItems = document.querySelectorAll('.usage-item');
+            usageItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
